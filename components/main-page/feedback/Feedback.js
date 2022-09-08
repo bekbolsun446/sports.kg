@@ -54,7 +54,11 @@ export default function Feedback({feedback}) {
                         {feedback.map(item =>
                             <div key={item.id} className={classes.item}>
                                 <p className={classes.itemText}>
-                                    {item.text}
+                                    {item.text.length > 150 ?
+                                        item.text.slice(0, 150) + '...'
+                                        :
+                                        item.text
+                                    }
                                 </p>
                                 <div className={classes.itemUser}>
                                     <img src="http://sports.com.kg/icon/avatar.png" alt=""/>
