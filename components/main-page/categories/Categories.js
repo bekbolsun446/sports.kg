@@ -1,4 +1,4 @@
-import classes from "./Categories.module.scss";
+import classes from "./categories.module.scss";
 import Link from "next/link";
 
 export default function Categories() {

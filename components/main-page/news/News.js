@@ -1,4 +1,4 @@
-import classes from "./News.module.scss";
+import classes from "./news.module.scss";
 import SectionHead from "../section-head/SectionHead";
 import Slider from "react-slick";
 import A from "../../link/A";
@@ -43,7 +43,7 @@ export default function News({news}) {
 
 
     return (
-        <div className={[classes.news_section].join(' ')}>
+        <div className={[classes.news_section,'main-news'].join(' ')}>
             <div className="container">
                 <SectionHead
                     title={'Новости'}

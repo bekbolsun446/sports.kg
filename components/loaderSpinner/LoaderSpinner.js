@@ -1,4 +1,4 @@
-import classes from "./LoaderSpinner.module.scss";
+import classes from "./loaderSpinner.module.scss";
 import {RevolvingDot} from "react-loader-spinner";
 
 export default function LoaderSpinner() {

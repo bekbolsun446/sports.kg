@@ -1,4 +1,4 @@
-import classes from "./SectionHead.module.scss";
+import classes from "./sectionHead.module.scss";
 import Link from "next/link";
 
 export default function SectionHead({title, linkTitle, link}) {

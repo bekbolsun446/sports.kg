@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./Card.module.scss";
+import classes from "./card.module.scss";
 import A from "../link/A";
 
 export default function Card({card, link}) {

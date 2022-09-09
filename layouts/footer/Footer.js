@@ -1,4 +1,4 @@
-import classes from "./Footer.module.scss";
+import classes from "./footer.module.scss";
 import Link from "next/link";
 import {AiFillFacebook} from 'react-icons/ai'
 import {GrInstagram} from 'react-icons/gr'

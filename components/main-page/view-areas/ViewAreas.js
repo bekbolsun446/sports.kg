@@ -1,4 +1,4 @@
-import classes from "./ViewAreas.module.scss";
+import classes from "./viewAreas.module.scss";
 import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -43,7 +43,7 @@ export default function ViewAreas({categories}) {
 
     return (
         <>
-            <div className={classes.view_areas}>
+            <div className={[classes.view_areas, 'view-areas'].join(' ')}>
                 <div className="container">
                     <SectionHead
                         title='Вид площадки'

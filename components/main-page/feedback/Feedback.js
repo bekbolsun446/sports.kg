@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./Feedback.module.scss";
+import classes from "./feedback.module.scss";
 import SectionHead from "../section-head/SectionHead";
 import Slider from "react-slick";
 import A from "../../link/A";
@@ -42,7 +42,7 @@ export default function Feedback({feedback}) {
     };
 
     return (
-        <div className={classes.feedback}>
+        <div className={[classes.feedback,'feedback'].join(' ')}>
             <div className="container">
                 <SectionHead
                     title='Отзывы'

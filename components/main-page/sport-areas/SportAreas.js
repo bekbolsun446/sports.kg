@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./SportAreas.module.scss";
+import classes from "./sportAreas.module.scss";
 import SectionHead from "../section-head/SectionHead";
 import Card from "../../card/Card";
 

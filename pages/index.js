@@ -1,7 +1,5 @@
 import Container from "../container/Container";
-import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
-import {useEffect, useState} from "react";
 import LoaderSpinner from "../components/loaderSpinner/LoaderSpinner";
 import Slider from "../components/main-page/slider/Slider";
 import Categories from "../components/main-page/categories/Categories";
@@ -11,7 +9,6 @@ import News from "../components/main-page/news/News";
 import Feedback from "../components/main-page/feedback/Feedback";
 
 export default function MainPage({sliders, categories, sportAreas, news, feedback}) {
-
     if (!sliders || !categories || !sportAreas || !news) {
         return (
             <Container>

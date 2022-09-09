@@ -13,4 +13,8 @@ a {
   text-decoration: none;
 }
 
+.feedback .slick-arrow, .view-areas .slick-arrow, .main-news .slick-arrow {
+  box-shadow: 0 0 5px #a9a3a3;
+}
+
 /*# sourceMappingURL=global.css.map */

@@ -1,0 +1,34 @@
+.hero {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero .hero_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.hero .heroTitle {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+}
+.hero .heroDesc {
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/*# sourceMappingURL=hero.module.css.map */
