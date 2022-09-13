@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function Slide() {
+export default function Slide({galleries}) {
 
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
@@ -21,25 +21,13 @@ export default function Slide() {
             <Slider
                 asNavFor={nav2}
                 ref={slider => (slider1 = slider)}
-            >
-                <div>
-                    <h3>1</h3>
-                </div>
-                <div>
-                    <h3>2</h3>
-                </div>
-                <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
-                </div>
-                <div>
-                    <h3>5</h3>
-                </div>
-                <div>
-                    <h3>6</h3>
-                </div>
+            >{galleries.map((gallery, index) =>
+                <img
+                    key={index}
+                    src={gallery.image}
+                    alt=""
+                />
+            )}
             </Slider>
             <Slider
                 asNavFor={nav1}
@@ -47,25 +35,13 @@ export default function Slide() {
                 slidesToShow={3}
                 swipeToSlide={true}
                 focusOnSelect={true}
-            >
-                <div>
-                    <h3>1</h3>
-                </div>
-                <div>
-                    <h3>2</h3>
-                </div>
-                <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
-                </div>
-                <div>
-                    <h3>5</h3>
-                </div>
-                <div>
-                    <h3>6</h3>
-                </div>
+            >{galleries.map((gallery, index) =>
+                <img
+                    key={index}
+                    src={gallery.image}
+                    alt=""
+                />
+            )}
             </Slider>
         </div>
     );

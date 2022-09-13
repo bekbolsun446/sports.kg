@@ -8,10 +8,21 @@ export default function About({area}) {
     return (
         <div className={classes.detailAbout}>
             {area.price && <p className={classes.price}>{area.price} cом/час</p>}
-            {area.address && <p className={classes.address}>
-                <GoLocation className={classes.icon}/>
-                {area.address}
-            </p>}
+            {area.address && <div className={classes.address}>
+                <p className={classes.address_content}>
+                    <GoLocation className={classes.icon}/>
+                    {area.address}
+                </p>
+                {area.infrastructure.map(item =>
+                    <div
+                        className={classes.infrastructure}
+                        key={item.id}
+                    >
+                        <img src={item.image} alt={item.title}/>
+                        <p>{item.title}</p>
+                    </div>
+                )}
+            </div>}
             <ul className={classes.tel}>
                 {area.phone_1 && <li>
                     <BsTelephone className={classes.icon}/>

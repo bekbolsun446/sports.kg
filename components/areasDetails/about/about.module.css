@@ -15,9 +15,23 @@
   line-height: 1.2;
   color: inherit;
   font-size: 1rem;
+}
+.detailAbout .address .address_content {
   display: flex;
   align-items: center;
   column-gap: 16px;
+  margin-bottom: 16px;
+}
+.detailAbout .address .infrastructure {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  margin-bottom: 12px;
+}
+.detailAbout .address .infrastructure img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
 }
 .detailAbout .address .icon {
   font-size: 24px;

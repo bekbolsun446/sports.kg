@@ -1,11 +1,5 @@
 import Container from "../../../container/Container";
 import classes from "./areaDetail.module.scss";
-import Filter from "../../../components/sport-areas-page/filter/Filter";
-import Cards from "../../../components/sport-areas-page/cards/Cards";
-import {GoLocation} from 'react-icons/go'
-import {BsTelephone} from 'react-icons/bs'
-import {BsWhatsapp} from 'react-icons/bs'
-import {BsInstagram} from 'react-icons/bs'
 import About from "../../../components/areasDetails/about/About";
 import Slide from "../../../components/areasDetails/slide/Slide";
 import Map1 from "../../../components/map/map1/Map1";
@@ -19,18 +13,22 @@ export default function AreaDetail({area}) {
             longitude: area.longitude
         }
     ]
+    console.log(area)
     return (
         <Container>
             <div className={classes.detail}>
                 <div className="container">
-                    <h3 className={classes.title}>Kg sport</h3>
+                    <h3 className={classes.title}>{area.title}</h3>
                     <div className={[classes.detail_content, 'row'].join(' ')}>
                         <div className={'col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12'}>
-                            <Slide/>
+                            <Slide galleries={area.galleries}/>
                         </div>
                         <div className={'col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12'}>
                             <About area={area}/>
                         </div>
+                    </div>
+                    <div className={[classes.text, 'row'].join(' ')}>
+                        <p className={'col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12'}>{area.text}</p>
                     </div>
                     <div className={classes.map}>
                         <Map1 mapAreas={map}/>

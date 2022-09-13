@@ -9,6 +9,10 @@
 .detail .detail_content {
   margin-top: 50px;
 }
+.detail .text {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
 .detail .map {
   margin: 50px 0;
 }
