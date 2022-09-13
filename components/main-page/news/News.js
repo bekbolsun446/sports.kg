@@ -12,8 +12,8 @@ export default function News({news}) {
         slidesToShow: 3,
         slidesToScroll: 1,
         initialSlide: 0,
-        autoplay:true,
-        autoplaySpeed:2000,
+        autoplay: true,
+        autoplaySpeed: 2000,
         arrows: true,
         responsive: [
             {
@@ -43,7 +43,7 @@ export default function News({news}) {
 
 
     return (
-        <div className={[classes.news_section,'main-news'].join(' ')}>
+        <div className={[classes.news_section, 'main-news'].join(' ')}>
             <div className="container">
                 <SectionHead
                     title={'Новости'}
@@ -63,7 +63,10 @@ export default function News({news}) {
                                     className={classes.newsImg}
                                     alt=""
                                 />
-                                <A href={'/'} className={classes.newsFoot}>
+                                <A
+                                    href={'/'}
+                                    className={classes.newsFoot}
+                                >
                                     {newsItem.title.slice(0, 50) + '...'}
                                 </A>
                             </div>

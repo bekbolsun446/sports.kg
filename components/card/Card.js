@@ -13,7 +13,7 @@ export default function Card({card, link}) {
                     <p className={classes.like}>{card?.title}</p>
                     <div className={classes.foot_price}>
                         <p className={classes.price}>{card?.price} сом/час</p>
-                        <A link={link} className={classes.link}>Подробнее</A>
+                        <A href={`/sport-areas/${card.id}`} className={classes.link}>Подробнее</A>
                     </div>
                 </div>
             </div>

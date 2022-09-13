@@ -42,7 +42,7 @@ export default function Feedback({feedback}) {
     };
 
     return (
-        <div className={[classes.feedback,'feedback'].join(' ')}>
+        <div className={[classes.feedback, 'feedback'].join(' ')}>
             <div className="container">
                 <SectionHead
                     title='Отзывы'

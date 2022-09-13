@@ -1,5 +1,6 @@
 import classes from "./categories.module.scss";
 import Link from "next/link";
+import A from "../../link/A";
 
 export default function Categories() {
     const categories = [
@@ -25,12 +26,14 @@ export default function Categories() {
     return (
         <div className={[classes.categories, 'container'].join(' ')}>
             {categories.map(category =>
-                <Link key={category.id} href={category.link}>
-                    <a className={classes.category}>
-                        <img src={category.image} alt={category.name} className={classes.categoryImage}/>
-                        <p className={classes.categoryName}>{category.name}</p>
-                    </a>
-                </Link>
+                <A
+                    key={category.id}
+                    href={category.link}
+                    className={classes.category}
+                >
+                    <img src={category.image} alt={category.name} className={classes.categoryImage}/>
+                    <p className={classes.categoryName}>{category.name}</p>
+                </A>
             )}
         </div>
     );

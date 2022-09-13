@@ -1,11 +1,6 @@
 import classes from "./hero.module.scss";
 
-export default function Hero() {
-    const areaHero = {
-        title: 'СПОРТИВНЫЕ ПЛОЩАДКИ ',
-        description: 'Простая и удобная система',
-        image: 'http://sports.com.kg/img/banner.jpg'
-    }
+export default function Hero({areaHero}) {
 
     return (
         <div className={classes.hero}>

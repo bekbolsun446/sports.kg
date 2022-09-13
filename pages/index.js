@@ -46,6 +46,13 @@ export const getStaticProps = async () => {
     const resFeedback = await axios.get('http://admin.sports.com.kg/api/feedback')
     const feedback = resFeedback.data
 
+
+    if (!sliders || !categories || !sportAreas || !news || !feedback) {
+        return {
+            notFound: true
+        }
+    }
+
     return {
         props: {
             sliders: sliders,

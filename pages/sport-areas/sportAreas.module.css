@@ -1,5 +1,17 @@
 .area_content {
   padding: 70px 0;
+  position: relative;
+}
+.area_content .filter_content {
+  position: sticky;
+  top: 24px;
+  height: 70vh;
+}
+@media screen and (max-width: 767px) {
+  .area_content .filter_content {
+    position: static;
+    height: auto;
+  }
 }
 .area_content .areas_head {
   display: flex;

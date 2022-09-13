@@ -62,16 +62,13 @@ export default function Header() {
                 <div className={[classes.header_menu_content].join(' ')}>
                     <div className={[classes.header_menu].join(' ')}>
                         {headerLinks.map(headerLink =>
-                            <Link
+                            <A
                                 key={headerLink.id}
                                 href={headerLink.link}
+                                className={[classes.header_menu_link, router.pathname == headerLink.link && classes.active].join(' ')}
                             >
-                                <a
-                                    className={[classes.header_menu_link, router.pathname == headerLink.link && classes.active].join(' ')}
-                                >
-                                    {headerLink.name}
-                                </a>
-                            </Link>
+                                {headerLink.name}
+                            </A>
                         )}
                     </div>
                     <A
@@ -92,16 +89,13 @@ export default function Header() {
                     </div>
                     <div className={[classes.header_menu].join(' ')}>
                         {headerLinks.map(headerLink =>
-                            <Link
+                            <A
                                 key={headerLink.id}
                                 href={headerLink.link}
+                                className={[classes.header_menu_link, router.pathname == headerLink.link && classes.active].join(' ')}
                             >
-                                <a
-                                    className={[classes.header_menu_link, router.pathname == headerLink.link && classes.active].join(' ')}
-                                >
-                                    {headerLink.name}
-                                </a>
-                            </Link>
+                                {headerLink.name}
+                            </A>
                         )}
                     </div>
                     <A

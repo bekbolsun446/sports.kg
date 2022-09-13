@@ -3,7 +3,7 @@ import {useState} from "react";
 
 export default function Filter({categories}) {
 
-    const [category, setCategory] = useState(categories[0])
+    const [category, setCategory] = useState(categories[4])
 
     const [price, setPrice] = useState({
         from: 0,
