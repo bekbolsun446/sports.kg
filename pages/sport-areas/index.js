@@ -7,8 +7,6 @@ import LoaderSpinner from "../../components/loaderSpinner/LoaderSpinner";
 import Cards from "../../components/sport-areas-page/cards/Cards";
 
 export default function SportAreas({categories, sportAreas}) {
-
-    console.log(sportAreas)
     const areaHero = {
         title: 'СПОРТИВНЫЕ ПЛОЩАДКИ ',
         description: 'Простая и удобная система',

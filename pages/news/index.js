@@ -13,9 +13,6 @@ export default function MainPage({news}) {
         image: 'http://sports.com.kg/img/banner.jpg'
     }
 
-    console.log(news)
-
-
     return (
         <Container>
             <Hero areaHero={areaHero}/>

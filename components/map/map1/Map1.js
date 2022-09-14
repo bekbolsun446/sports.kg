@@ -48,9 +48,20 @@ export default function Map1({mapAreas}) {
                         <Placemark
                             key={area.id}
                             geometry={[area.latitude, area.longitude]}
+                            options={{
+                                iconColor: '#f46d6d',
+                                iconLayout: 'default#image',
+                                iconImageSize: [30, 40],
+                                iconImageOffset: [-20, -20],
+                                iconImageHref: 'http://sports.com.kg/img/marker.png',
+                                iconShape: {
+                                    type: 'Circle',
+                                    coordinates: [0, 0],
+                                    radius: 20
+                                },
+                            }}
                         />
                     )}
-                    <Placemark geometry={[]}/>
                 </Map>
             </div>
         </YMaps>

@@ -13,7 +13,6 @@ export default function AreaDetail({area}) {
             longitude: area.longitude
         }
     ]
-    console.log(area)
     return (
         <Container>
             <div className={classes.detail}>
@@ -41,7 +40,6 @@ export default function AreaDetail({area}) {
 
 export const getServerSideProps = async (context) => {
     const {id} = context.params
-    console.log(id)
     const resArea = await axios.get(`http://admin.sports.com.kg/api/sports_area/detail/${id}/`)
     const area = resArea.data
     if (!area) {

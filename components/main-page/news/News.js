@@ -41,7 +41,6 @@ export default function News({news}) {
         ]
     };
 
-
     return (
         <div className={[classes.news_section, 'main-news'].join(' ')}>
             <div className="container">

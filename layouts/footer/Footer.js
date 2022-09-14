@@ -67,7 +67,12 @@ export default function Footer() {
             <div className="container">
                 <p className={classes.foot}>
                     Copyright © 2021 By
-                    <a href="" target={'_blank'} className=""> Bekbolsun Samaganov</a>
+                    <a
+                        href="https://instagram.com/bekbolsun_samaganov"
+                        target={'_blank'} className=""
+                    >
+                        Bekbolsun
+                        Samaganov</a>
                 </p>
             </div>
         </section>
