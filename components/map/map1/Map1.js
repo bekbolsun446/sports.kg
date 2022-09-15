@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     FullscreenControl, GeolocationControl,
     Map,
@@ -10,6 +10,14 @@ import {
     ZoomControl
 } from "react-yandex-maps";
 import classes from "./map1.module.scss";
+import {useSelector} from "react-redux";
+import {
+    filteringCategory, filteringInfrastructure, filteringMap, filteringMaxPrice,
+    filteringMinPrice, filteringPage,
+    filteringSearch,
+    filteringType
+} from "../../../filtering/filteringSportArea";
+import {getFetcher} from "../../../store/api";
 
 export default function Map1({mapAreas}) {
 

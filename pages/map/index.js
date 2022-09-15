@@ -5,6 +5,16 @@ import classes from "./map.module.scss";
 import axios from "axios";
 import Map1 from "../../components/map/map1/Map1";
 import LoaderSpinner from "../../components/loaderSpinner/LoaderSpinner";
+import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {
+    filteringCategory, filteringInfrastructure, filteringMap,
+    filteringMaxPrice,
+    filteringMinPrice, filteringPage,
+    filteringSearch,
+    filteringType
+} from "../../filtering/filteringSportArea";
+import {getFetcher} from "../../store/api";
 
 export default function MainPage({categories, mapAreas}) {
 
@@ -13,6 +23,35 @@ export default function MainPage({categories, mapAreas}) {
         description: 'Cпортивные площадки на карте',
         image: 'http://sports.com.kg/img/banner.jpg'
     }
+
+    const areasDetails = useSelector(state => state.areas);
+
+    const [areas, setAreas] = useState(null);
+    let search = filteringSearch(areasDetails);
+    let category = filteringCategory(areasDetails);
+    let type = filteringType(areasDetails);
+    let minPrice = filteringMinPrice(areasDetails);
+    let maxPrice = filteringMaxPrice(areasDetails);
+    let infrastructure = filteringInfrastructure(areasDetails);
+    let page = filteringPage(areasDetails);
+    let mark = filteringMap(areasDetails);
+
+    let url = `sports_areas/for_map/` + mark + search + category + type + minPrice + maxPrice + infrastructure + page
+    useEffect(() => {
+        getFetcher(url)
+            .then(res => {
+                setAreas(res)
+            })
+    }, [areasDetails.page,
+        areasDetails.category,
+        areasDetails.minPrice,
+        areasDetails.maxPrice,
+        areasDetails.page,
+        areasDetails.infrastructure,
+        areasDetails.type,
+
+    ])
+
 
     if (!categories || !mapAreas) {
         return (
@@ -31,7 +70,7 @@ export default function MainPage({categories, mapAreas}) {
                         <div className={classes.map_head}>
                             <input placeholder='Kг спорт' type="text"/>
                         </div>
-                        <Map1 mapAreas={mapAreas}/>
+                        <Map1 mapAreas={areas ? areas : []}/>
                     </div>
                 </div>
             </div>

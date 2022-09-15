@@ -13,6 +13,8 @@ export default function AreaDetail({area}) {
             longitude: area.longitude
         }
     ]
+
+    console.log(area.latitude)
     return (
         <Container>
             <div className={classes.detail}>

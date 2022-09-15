@@ -2,8 +2,9 @@ import Container from "../../container/Container";
 import Hero from "../../components/hero/Hero";
 import classes from "./news.module.scss";
 import Categories from "../../components/news/categories/Categories";
-import axios from "axios";
 import NewsItem from "../../components/news/newsItem/NewsItem";
+import LoaderSpinner from "../../components/loaderSpinner/LoaderSpinner";
+import {getFetcher} from "../../store/api";
 
 export default function MainPage({news}) {
 
@@ -13,6 +14,11 @@ export default function MainPage({news}) {
         image: 'http://sports.com.kg/img/banner.jpg'
     }
 
+    if (!news) {
+        return (
+            <LoaderSpinner/>
+        )
+    }
     return (
         <Container>
             <Hero areaHero={areaHero}/>
@@ -20,7 +26,7 @@ export default function MainPage({news}) {
                 <Categories/>
                 <div
                     className={classes.news_content}
-                >{news.results?.map((newsItem, index) =>
+                >{news?.results.map((newsItem, index) =>
                     <div
                         key={index}
                         className={classes.newsItem}
@@ -39,9 +45,8 @@ export default function MainPage({news}) {
 
 export const getStaticProps = async () => {
 
-    const resNews = await axios.get('http://admin.sports.com.kg/api/news/category/football/1/')
-    const news = resNews.data
-
+    const getNews = await getFetcher('news/category/football/1/')
+    const news = getNews
     if (!news) {
         return {
             notFound: true

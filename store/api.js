@@ -1,8 +1,14 @@
-import axios from "axios"
+import axios from "axios";
 
-const baseUrl = 'http://admin.sports.com.kg/api/'
+export const baseUrl = 'http://admin.sports.com.kg/api/'
 
-export const getFetcher = async (request) => {
-    const data = await axios.get(`${baseUrl}${request}`)
-    return await data.data
+
+
+export async function getFetcher(request) {
+    try {
+        const data = await axios.get(`${baseUrl}${request}`)
+        return data.data
+    } catch (err) {
+        // console.log(err.response.data.error)
+    }
 }

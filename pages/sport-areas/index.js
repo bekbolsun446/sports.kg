@@ -5,15 +5,28 @@ import Filter from "../../components/sport-areas-page/filter/Filter";
 import axios from "axios";
 import LoaderSpinner from "../../components/loaderSpinner/LoaderSpinner";
 import Cards from "../../components/sport-areas-page/cards/Cards";
+import {getFetcher} from "../../store/api";
+import {changeMinPrice, changeSearch} from "../../store/sport-areas/areasSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 export default function SportAreas({categories, sportAreas}) {
+
+    const dispatch = useDispatch()
+    const areasDetails = useSelector(state => state.areas)
+
     const areaHero = {
         title: 'СПОРТИВНЫЕ ПЛОЩАДКИ ',
         description: 'Простая и удобная система',
         image: 'http://sports.com.kg/img/banner.jpg'
     }
 
-    if (!categories || !sportAreas) {
+    const handleSearch = (e) => {
+        let value = e.target.value;
+        dispatch(changeSearch(value));
+    }
+
+    console.log(areasDetails.search)
+    if (!categories) {
         return (
             <LoaderSpinner/>
         )
@@ -28,10 +41,15 @@ export default function SportAreas({categories, sportAreas}) {
                     </div>
                     <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
                         <div className={classes.areas_head}>
-                            <input placeholder='Kг спорт' type="text"/>
+                            <input
+                                placeholder='Kг спорт'
+                                type="text"
+                                value={areasDetails.search != null ? areasDetails.search : ''}
+                                onChange={handleSearch}
+                            />
                             <p>Показано 1– 9 из 16 результатов</p>
                         </div>
-                        <Cards sportAreas={sportAreas}/>
+                        <Cards/>
                     </div>
                 </div>
             </div>
@@ -41,13 +59,9 @@ export default function SportAreas({categories, sportAreas}) {
 
 export const getStaticProps = async () => {
 
-    const resCategories = await axios.get('http://admin.sports.com.kg/api/categories/')
-    const categories = resCategories.data
+    const categories = await getFetcher('categories/')
 
-    const resSportAreas = await axios.get('http://admin.sports.com.kg/api/sports_areas?page=1')
-    const sportAreas = resSportAreas.data
-
-    if (!sportAreas || !categories) {
+    if (!categories) {
         return {
             notFound: true
         }
@@ -56,7 +70,6 @@ export const getStaticProps = async () => {
     return {
         props: {
             categories: categories,
-            sportAreas: sportAreas,
         }
     }
 }
