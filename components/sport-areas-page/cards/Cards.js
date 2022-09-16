@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./cards.module.scss";
 import Card from "../../card/Card";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getFetcher} from "../../../store/api";
 import LoaderSpinner from "../../loaderSpinner/LoaderSpinner";
 import {
@@ -13,9 +13,11 @@ import {
     filteringSearch,
     filteringType
 } from "../../../filtering/filteringSportArea";
+import {changePerPage} from "../../../store/sport-areas/areasSlice";
 
 export default function Cards() {
 
+    const dispatch = useDispatch();
     const areasDetails = useSelector(state => state.areas)
     const [areas, setAreas] = useState(null)
     let search = filteringSearch(areasDetails);
@@ -26,7 +28,7 @@ export default function Cards() {
     let infrastructure = filteringInfrastructure(areasDetails)
     let page = filteringPage(areasDetails)
 
-    let url = `sports_areas/?` + search + category + type + minPrice + maxPrice + infrastructure + page + '&per_page=100000'
+    let url = `sports_areas/?` + search + category + type + minPrice + maxPrice + infrastructure + page + `&per_page=${areasDetails.perPage}`
     useEffect(() => {
         getFetcher(url)
             .then(res => {
@@ -39,9 +41,26 @@ export default function Cards() {
         areasDetails.page,
         areasDetails.infrastructure,
         areasDetails.type,
+        areasDetails.perPage
 
     ])
 
+
+    useEffect(() => {
+        document.addEventListener('scroll', scrollHandler)
+
+        return function () {
+            document.removeEventListener('scroll', scrollHandler)
+        }
+    })
+
+    const scrollHandler = (e) => {
+        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+            setTimeout(() => {
+                dispatch(changePerPage(areasDetails.perPage + 12))
+            }, 500)
+        }
+    }
 
     if (!areas) {
         return (

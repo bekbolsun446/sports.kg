@@ -7,7 +7,8 @@ const initialState = {
     page: null,
     minPrice: null,
     maxPrice: null,
-    infrastructure: null
+    infrastructure: null,
+    perPage: 12
 }
 
 const areasSlice = createSlice({
@@ -63,6 +64,13 @@ const areasSlice = createSlice({
                 state.infrastructure = null
             }
         },
+        changePerPage(state, action) {
+            if (action.payload) {
+                state.perPage = action.payload
+            } else {
+                state.perPage = 12
+            }
+        }
     }
 })
 
@@ -74,5 +82,6 @@ export const {
     changeInfrastructure,
     changeCategory,
     changeMinPrice,
-    changeMaxPrice
+    changeMaxPrice,
+    changePerPage
 } = areasSlice.actions

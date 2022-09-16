@@ -25,7 +25,6 @@ export default function SportAreas({categories, sportAreas}) {
         dispatch(changeSearch(value));
     }
 
-    console.log(areasDetails.search)
     if (!categories) {
         return (
             <LoaderSpinner/>

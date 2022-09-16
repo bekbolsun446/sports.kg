@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     changeCategory, changeInfrastructure,
     changeMaxPrice,
-    changeMinPrice,
+    changeMinPrice, changePerPage,
     changeSearch,
     changeType
 } from "../../../store/sport-areas/areasSlice";
@@ -27,6 +27,7 @@ export default function Filter({categories}) {
         dispatch(changeMaxPrice(null));
         dispatch(changeInfrastructure(null));
         dispatch(changeSearch(null));
+        dispatch(changePerPage(null))
     }, [areasDetails.category])
 
 
