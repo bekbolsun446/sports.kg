@@ -41,17 +41,25 @@ export default function AreaDetail({area}) {
 };
 
 export const getServerSideProps = async (context) => {
-    const {id} = context.params
-    const resArea = await axios.get(`http://admin.sports.com.kg/api/sports_area/detail/${id}/`)
-    const area = resArea.data
-    if (!area) {
-        return {
-            notFound: true
+    try {
+        const {id} = context.params
+        const resArea = await axios.get(`http://admin.sports.com.kg/api/sports_area/detail/${id}/`)
+        const area = resArea.data
+        if (!area) {
+            return {
+                notFound: true
+            }
         }
-    }
-    return {
-        props: {
-            area: area
+        return {
+            props: {
+                area: area
+            }
+        }
+    } catch {
+        return {
+            props: {
+                area: null
+            }
         }
     }
 }

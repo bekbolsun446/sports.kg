@@ -30,36 +30,47 @@ export default function MainPage({sliders, categories, sportAreas, news, feedbac
 
 
 export const getStaticProps = async () => {
+    try {
+        const resSliders = await axios.get('http://admin.sports.com.kg/api/sliders')
+        const sliders = resSliders.data
 
-    const resSliders = await axios.get('http://admin.sports.com.kg/api/sliders')
-    const sliders = resSliders.data
+        const resCategories = await axios.get('http://admin.sports.com.kg/api/categories/')
+        const categories = resCategories.data
 
-    const resCategories = await axios.get('http://admin.sports.com.kg/api/categories/')
-    const categories = resCategories.data
+        const resSportAreas = await axios.get('http://admin.sports.com.kg/api/sports_areas/')
+        const sportAreas = resSportAreas.data
 
-    const resSportAreas = await axios.get('http://admin.sports.com.kg/api/sports_areas/')
-    const sportAreas = resSportAreas.data
+        const resNews = await axios.get('http://admin.sports.com.kg/api/news/category/football/1/')
+        const news = resNews.data
 
-    const resNews = await axios.get('http://admin.sports.com.kg/api/news/category/football/1/')
-    const news = resNews.data
-
-    const resFeedback = await axios.get('http://admin.sports.com.kg/api/feedback')
-    const feedback = resFeedback.data
+        const resFeedback = await axios.get('http://admin.sports.com.kg/api/feedback')
+        const feedback = resFeedback.data
 
 
-    if (!sliders || !categories || !sportAreas || !news || !feedback) {
-        return {
-            notFound: true
+        if (!sliders || !categories || !sportAreas || !news || !feedback) {
+            return {
+                notFound: true
+            }
         }
-    }
 
-    return {
-        props: {
-            sliders: sliders,
-            categories: categories,
-            sportAreas: sportAreas,
-            news: news,
-            feedback: feedback
+        return {
+            props: {
+                sliders: sliders,
+                categories: categories,
+                sportAreas: sportAreas,
+                news: news,
+                feedback: feedback
+            }
+        }
+    } catch {
+        return {
+            props: {
+                sliders: null,
+                categories: null,
+                sportAreas: null,
+                news: null,
+                feedback: null
+            }
         }
     }
 }

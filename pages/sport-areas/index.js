@@ -56,19 +56,26 @@ export default function SportAreas({categories, sportAreas}) {
     )
 }
 
+
 export const getStaticProps = async () => {
-
-    const categories = await getFetcher('categories/')
-
-    if (!categories) {
-        return {
-            notFound: true
+    try {
+        const resCategories = await axios.get('http://admin.sports.com.kg/api/categories/')
+        const categories = resCategories.data
+        if (!categories) {
+            return {
+                notFound: true
+            }
         }
-    }
-
-    return {
-        props: {
-            categories: categories,
+        return {
+            props: {
+                categories: categories,
+            }
+        }
+    } catch {
+        return {
+            props: {
+                categories: null,
+            }
         }
     }
 }

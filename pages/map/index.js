@@ -16,7 +16,7 @@ import {
 } from "../../filtering/filteringSportArea";
 import {getFetcher} from "../../store/api";
 
-export default function MainPage({categories, mapAreas}) {
+export default function MainPage({categories}) {
 
     const areaHero = {
         title: 'НАХОДИТЕ СПОРТИВНЫЕ ПЛОЩАДКИ ',
@@ -53,7 +53,7 @@ export default function MainPage({categories, mapAreas}) {
     ])
 
 
-    if (!categories || !mapAreas) {
+    if (!categories || !areas) {
         return (
             <LoaderSpinner/>
         )
@@ -81,16 +81,24 @@ export default function MainPage({categories, mapAreas}) {
 
 export const getStaticProps = async () => {
 
-    const resCategories = await axios.get('http://admin.sports.com.kg/api/categories/')
-    const categories = resCategories.data
-
-    const resMapAreas = await axios.get('http://admin.sports.com.kg/api/sports_areas/for_map/')
-    const mapAreas = resMapAreas.data
-
-    return {
-        props: {
-            categories: categories,
-            mapAreas
+    try {
+        const resCategories = await axios.get('http://admin.sports.com.kg/api/categories/')
+        const categories = resCategories.data
+        if (!categories) {
+            return {
+                notFound: true
+            }
+        }
+        return {
+            props: {
+                categories: categories,
+            }
+        }
+    } catch {
+        return {
+            props: {
+                categories: null,
+            }
         }
     }
 }

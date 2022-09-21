@@ -90,11 +90,3 @@ export default function MainPage() {
         </Container>
     )
 }
-
-
-export const getStaticProps = async () => {
-
-    return {
-        props: {}
-    }
-}
