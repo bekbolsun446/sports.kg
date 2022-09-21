@@ -4,19 +4,30 @@ import axios from "axios";
 
 
 const initialState = {
-    news: getFetcher('news/category/football/1/').then(res => res.results)
+    name: 'football',
+    page: 1,
 }
 
 const newSlice = createSlice({
     name: 'news',
     initialState: initialState,
     reducers: {
-        getNews(state) {
-            const data = axios.get(`http://admin.sports.com.kg/api/news/category/football/1/`)
-            state.news = data.data?.results;
+        changeName(state, action) {
+            if (action.payload) {
+                state.name = action.payload
+            } else {
+                state.name = 'football'
+            }
+        },
+        changePage(state, action) {
+            if (action.payload) {
+                state.page = action.payload
+            } else {
+                state.page = 1
+            }
         }
     }
 })
 
 export default newSlice.reducer
-export const {getNews} = newSlice.actions
+export const {changeName, changePage} = newSlice.actions

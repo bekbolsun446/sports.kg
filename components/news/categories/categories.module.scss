@@ -16,8 +16,13 @@
     text-transform: uppercase;
     cursor: pointer;
     margin-top: 24px;
+
     &:hover {
       color: #f46d6d;
     }
+  }
+
+  .active {
+    color: #f46d6d;
   }
 }

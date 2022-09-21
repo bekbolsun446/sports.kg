@@ -24,6 +24,12 @@
     line-height: 1.2;
     text-transform: uppercase;
     text-align: center;
+    @media screen and (max-width: 767px) {
+      font-size: 40px;
+    }
+    @media screen and (max-width: 575px) {
+      font-size: 32px;
+    }
   }
 
   .heroDesc {

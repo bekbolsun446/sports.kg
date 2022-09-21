@@ -45,7 +45,6 @@ export default function Cards() {
 
     ])
 
-
     useEffect(() => {
         document.addEventListener('scroll', scrollHandler)
 

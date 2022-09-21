@@ -24,6 +24,16 @@
   text-transform: uppercase;
   text-align: center;
 }
+@media screen and (max-width: 767px) {
+  .hero .heroTitle {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .hero .heroTitle {
+    font-size: 32px;
+  }
+}
 .hero .heroDesc {
   font-size: 18px;
   color: #fff;

@@ -20,5 +20,8 @@
 .categories .category:hover {
   color: #f46d6d;
 }
+.categories .active {
+  color: #f46d6d;
+}
 
 /*# sourceMappingURL=categories.module.css.map */
